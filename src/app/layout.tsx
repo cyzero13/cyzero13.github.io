@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navigation from '../components/navigation/navigation';
+import dynamic from 'next/dynamic';
+import Particles from "@/components/background/particles";
+// const ThreeScene = dynamic(() => import('../components/threejs/ThreeScene'));
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black flex justify-center p-2`}
       >
+      <Navigation />
+      {/* <ThreeScene /> */}
+      <Particles
+        className="fixed inset-0 -z-10 animate-fade-in"
+        quantity={100}
+      />
+      <div className="fixed inset-0 -z-10 flex flex-col overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+      </div>
         {children}
       </body>
     </html>
